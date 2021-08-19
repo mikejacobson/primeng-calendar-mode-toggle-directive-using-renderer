@@ -103,6 +103,7 @@ export class CalendarModeToggleDirective implements OnInit, OnDestroy {
     }
 
     if (didRestoreSelection) {
+      // prevent jump to current month when clearing selection
       this.calendar.createMonths(this.calendar.currentMonth, this.calendar.currentYear);
     }
   }
