@@ -1,0 +1,29 @@
+{
+  "name": "primeng-calendar-mode-toggle-directive-using-renderer",
+  "version": "1.0.0",
+  "description": "Angular Directive that adds Selection Mode toggle to PrimeNG Calendar component, with the toggle buttons generated programmatically using Renderer2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikejacobson/primeng-calendar-mode-toggle-directive-using-renderer.git"
+  },
+  "keywords": [
+    "Angular",
+    "Directive",
+    "PrimeNG",
+    "Calendar"
+  ],
+  "author": "Mike Jacobson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikejacobson/primeng-calendar-mode-toggle-directive-using-renderer/issues"
+  },
+  "homepage": "https://github.com/mikejacobson/primeng-calendar-mode-toggle-directive-using-renderer#readme",
+  "dependencies": {
+    "@angular/core": "^11.2.14",
+    "primeng": "^11.4.5"
+  }
+}

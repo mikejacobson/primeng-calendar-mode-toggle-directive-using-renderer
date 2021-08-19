@@ -1,0 +1,14 @@
+<div class="p-fluid p-grid p-formgrid">
+  <div class="p-field p-col-12 p-md-4">
+      <label>Single Selection or Range</label>
+      <p-calendar 
+          [(ngModel)]="rangeDates"
+          selectionMode="single"
+          calendarModeToggle
+          [showButtonBar]="true"
+          calendarModeToggle
+          [readonlyInput]="true"
+          inputId="range">
+      </p-calendar>
+  </div>
+</div>
