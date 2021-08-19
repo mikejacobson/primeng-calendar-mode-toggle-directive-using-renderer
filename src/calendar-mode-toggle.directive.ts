@@ -80,7 +80,30 @@ export class CalendarModeToggleDirective implements OnInit, OnDestroy {
     clickedButton.classList.add(selectedClass);
 
     if (clearSelection) {
-      this.calendar.writeValue(null);
+      this.clearDateSelection();
+    }
+  }
+
+  clearDateSelection() {
+    const selectedMonth = this.calendar.currentMonth;
+    const selectedYear = this.calendar.currentYear;
+
+    this.calendar.writeValue(null);
+
+    let didRestoreSelection = false;
+
+    if (this.calendar.currentMonth !== selectedMonth) {
+      this.calendar.currentMonth = selectedMonth;
+      didRestoreSelection = true;
+    }
+
+    if (this.calendar.currentYear !== selectedYear) {
+      this.calendar.currentYear = selectedYear;
+      didRestoreSelection = true;
+    }
+
+    if (didRestoreSelection) {
+      this.calendar.createMonths(this.calendar.currentMonth, this.calendar.currentYear);
     }
   }
 
