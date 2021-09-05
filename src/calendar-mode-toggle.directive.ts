@@ -66,12 +66,12 @@ export class CalendarModeToggleDirective implements OnInit, OnDestroy {
     }
 
     this.calendar.value = this.calendar.value[0];
+    this.calendar.hideOverlay();
 
     setTimeout(() => {
       this.setMode('single', this.buttons[0]);
       this.calendar.writeValue(this.calendar.value);
-      this.calendar.hideOverlay();
-    });
+    }, 50);
   }
 
   setMode(newMode: SelectionMode, clickedButton: HTMLButtonElement, { clearSelection = false } = {}) {
