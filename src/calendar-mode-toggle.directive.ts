@@ -13,7 +13,7 @@ const styles = `
 
 .toggle-wrapper button {
   letter-spacing: .03125rem;
-  padding: 8px;
+  padding: 0.5rem;
 }
 
 .toggle-wrapper button:focus {
