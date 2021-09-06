@@ -1,4 +1,4 @@
-import { Component, Directive, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Calendar } from 'primeng/calendar';
 
 type SelectionMode = 'single' | 'range';
@@ -7,23 +7,29 @@ const primeNgButtonClasses = 'p-button-text p-ripple p-button p-component';
 const selectedClass = 'selected';
 const styles = `
 .toggle-wrapper {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.toggle-wrapper button {s
-    letter-spacing: 0.235px;
-    padding: 8px;
+.toggle-wrapper button {
+  letter-spacing: 0.5px;
+  padding: 8px;
 }
+
+.toggle-wrapper button:focus {
+  box-shadow: none;
+}
+
 .toggle-wrapper button.selected {
-    font-weight: 700;
-    letter-spacing: 0;
+  cursor: default;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 .toggle-wrapper span {
-    font-size: 1.25em;
-    opacity: 0.7;
-    padding: 0;
+  font-size: 1.25em;
+  opacity: 0.7;
+  padding: 0;
 }
 `;
 
@@ -74,8 +80,12 @@ export class CalendarModeToggleDirective implements OnInit, OnDestroy {
     }, 50);
   }
 
-  setMode(newMode: SelectionMode, clickedButton: HTMLButtonElement, { clearSelection = false } = {}) {
-    this.calendar.selectionMode = newMode;
+  setMode(selectedMode: SelectionMode, clickedButton: HTMLButtonElement, { clearSelection = false } = {}) {
+    if (this.calendar.selectionMode === selectedMode) {
+      return;
+    }
+
+    this.calendar.selectionMode = selectedMode;
     this.deselectButtons();
     clickedButton.classList.add(selectedClass);
 
@@ -141,6 +151,7 @@ export class CalendarModeToggleDirective implements OnInit, OnDestroy {
         this.rn.listen(dateRangeButton, 'click', () => this.setMode('range', dateRangeButton, { clearSelection: true }))
       ];
 
+      this.calendar.selectionMode = null;
       this.setMode('single', dateButton);
     }
 
